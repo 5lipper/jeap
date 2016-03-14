@@ -1,0 +1,8 @@
+jeap_freebsd : jeap.c
+	gcc -std=c99 -O3 -o $@ jeap.c -lpthread
+	gcc -std=c99 -g -o $@.dbg jeap.c -lpthread -DDEBUG
+	cp $@ $@.strip
+	strip $@.strip
+
+clean:
+	rm -rf jeap_freebsd jeap_freebsd.dbg jeap_freebsd.strip

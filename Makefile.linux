@@ -1,0 +1,8 @@
+jeap_linux: jeap.c
+	gcc -std=c99 -O3 -o $@ $< -ljemalloc -lpthread
+	gcc -std=c99 -g -o $@.dbg $< -ljemalloc -lpthread -DDEBUG
+	cp $@ $@.strip
+	strip $@.strip
+
+clean:
+	rm -rf jeap_linux jeap_linux.dbg jeap_linux.strip
